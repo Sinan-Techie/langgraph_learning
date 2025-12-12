@@ -11,8 +11,8 @@ from starlette.responses import JSONResponse
 
 load_dotenv()
 
-AGENT_NAME = os.getenv("DOMAIN1_NAME", "Domain1Agent")
-AGENT_URL = os.getenv("DOMAIN1_URL", "http://0.0.0.0")
+AGENT_NAME = os.getenv("DOMAIN1_NAME", "Hr_agent")
+AGENT_URL = os.getenv("DOMAIN1_URL", "http://localhost:9101")
 AGENT_PORT = int(os.getenv("DOMAIN1_PORT", "9101"))
 SHARED_API_KEY = os.getenv("SHARED_API_KEY", "your-secret-key")
 
@@ -29,8 +29,8 @@ class APIKeyMiddleware(BaseHTTPMiddleware):
 
 if __name__ == "__main__":
     agent_card = AgentCard(
-        name=AGENT_NAME,
-        description="Domain1 agent (example domain)",
+        name="HR_Agent",
+        description="HR domain agent that summarizes employee data.",
         url=AGENT_URL,
         version="0.1.0",
         defaultInputModes=["text"],
@@ -49,7 +49,7 @@ if __name__ == "__main__":
         http_handler=request_handler,
     )
     app = server.build()
-    app.add_middleware(APIKeyMiddleware, api_key=SHARED_API_KEY)
+    # app.add_middleware(APIKeyMiddleware, api_key=SHARED_API_KEY)
 
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=AGENT_PORT)

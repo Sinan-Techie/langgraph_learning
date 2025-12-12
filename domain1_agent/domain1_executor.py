@@ -24,12 +24,12 @@ class Domain1Executor(AgentExecutor):
             data = json.loads(raw)
         except Exception:
             data = {"payload": raw}
-
+        
         payload = data.get("payload", {})
         # Hardcoded prompt logic (simple): instruct LLM to "process" the payload for Domain1
         formatted_prompt = f"Domain1 agent: transform the payload into a short summary. Payload: {json.dumps(payload)}"
         # get_llm returns a deterministic JSON-like string
-        llm_response = await get_llm(formatted_prompt, AGENT_NAME, trace_id=None)
+        llm_response = await get_llm(formatted_prompt, "core", trace_id="domain1")
 
         # Try convert to json-friendly object
         try:
