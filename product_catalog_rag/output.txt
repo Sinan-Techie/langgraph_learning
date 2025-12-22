@@ -1,0 +1,9 @@
+[
+  {
+    "input_query": "Max Server Components 345",
+    "selected_product_id": "CP-IT-0013",
+    "selected_product_name": "Dynasty Max Server Components 345",
+    "confidence": "high",
+    "reason": "Exact match on product name and model number; category aligns with query."
+  }
+]
